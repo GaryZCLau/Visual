@@ -1,0 +1,9 @@
+<h1> What would you like to change? </h1>
+<hr>
+<br>
+
+<%= form_for @post do |f| %>
+    <%= f.text_field :post %>
+    <br><br>
+    <%= f.submit %>
+<% end %>

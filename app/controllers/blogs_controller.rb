@@ -9,7 +9,7 @@ class BlogsController < ApplicationController
 
     def create
         @blog = Blog.create(params.require(:blog).permit(:title, :text))
-        redirect_to blog_path(@blog)
+        redirect_to new_summary_path
     end
 
     def show

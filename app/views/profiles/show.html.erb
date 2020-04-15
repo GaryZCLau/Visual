@@ -1,7 +1,7 @@
 <h1> <%=@profile.fullname%> </h1>
 <%= link_to "Edit Name", edit_profile_path %>
 <br> 
-<%= link_to "Search", profiles_path %>
+<%= link_to "Search Profiles", profiles_path %>
 <hr>
 
 <h2>Posts</h2> 
@@ -9,17 +9,20 @@
     <%= f.hidden_field :profile_id, value: @profile.id %>
     What's on your mind? <%= f.text_field :post %>
 <% end %>
+
 <hr>
 
 <ul>
     <% @profile.posts.each do |post| %>
         <li> 
-            <%= post.post %> </p>
+            <p> <%= post.post %> <%= link_to "Edit/Delete", post_path(post) %></p>
         </li>
     <% end %>
 </ul>
 
 <h2>Blogs</h2>
+<%= link_to "Create a Blog!", new_blog_path %>
+<hr>
 <ul>
     <% @profile.summaries.each do |summary| %>
         <li>

@@ -1,0 +1,12 @@
+<h1>What is your blog about?</h1>
+<hr>
+<br>
+
+<%= form_for @blog do |f| %>
+    Title:
+    <%= f.text_field :title %>
+    <br><br><br>
+    <%= f.text_field :text %>
+    <br><br><br>
+    <%= f.submit %>
+<% end %>

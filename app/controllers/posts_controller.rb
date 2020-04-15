@@ -22,13 +22,13 @@ class PostsController < ApplicationController
 
     def update
         @post = Post.find(params[:id])
-        @post.update(params.require(:post).permit(:post, :profile_id))
-        redirect_to blog_path(@post)
+        @post.update(params.require(:post).permit(:post))
+        redirect_to profile_path(@post.profile)
     end
 
     def destroy
         @post = Post.find(params[:id])
         @post.destroy
-        redirect_to blogs_path
+        redirect_to profile_path(@post.profile)
     end
 end

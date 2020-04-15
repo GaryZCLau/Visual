@@ -23,5 +23,13 @@ Rails.application.routes.draw do
   get '/posts/:id/edit', to: "posts#edit", as: "edit_post"
   patch '/posts/:id', to: "posts#update"
   delete "/posts/:id", to: "posts#destroy"
+
+  get '/summaries', to: 'summaries#index', as: "summaries"
+  get '/summaries/new', to: 'summaries#new', as: "new_summary"
+  post '/summaries', to: 'summaries#create'
+  get "/summaries/:id", to: "summaries#show", as: 'summary'
+  get '/summaries/:id/edit', to: "summaries#edit", as: "edit_summary"
+  patch '/summaries/:id', to: "summaries#update"
+  delete "/summaries/:id", to: "summaries#destroy"
   
 end
