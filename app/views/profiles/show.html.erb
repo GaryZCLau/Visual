@@ -1,0 +1,36 @@
+<h1> <%=@profile.fullname%> </h1>
+<%= link_to "Edit Name", edit_profile_path %>
+<br> 
+<%= link_to "Search", profiles_path %>
+<hr>
+
+<h2>Posts</h2> 
+<%= form_for @newpost do |f| %>
+    <%= f.hidden_field :profile_id, value: @profile.id %>
+    What's on your mind? <%= f.text_field :post %>
+<% end %>
+<hr>
+
+<ul>
+    <% @profile.posts.each do |post| %>
+        <li> 
+            <%= post.post %> </p>
+        </li>
+    <% end %>
+</ul>
+
+<h2>Blogs</h2>
+<ul>
+    <% @profile.summaries.each do |summary| %>
+        <li>
+            <%= link_to summary.blog.title, blog_path(summary.blog) %>
+            <br><br>
+            <%= summary.summary %>
+            <hr>
+        </li>
+    <% end %>
+</ul>
+
+<br><br>
+<%= button_to "Delete Profile", @profile, method: :delete %>
+

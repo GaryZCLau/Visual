@@ -1,0 +1,7 @@
+<h1> What would you like your new name to be? </h1>
+<br>
+
+<%= form_for @profile do |f| %>
+    Name: <%= f.text_field :fullname %>
+    <%= f.submit %>
+<% end %>
