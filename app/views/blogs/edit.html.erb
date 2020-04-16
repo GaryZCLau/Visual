@@ -2,6 +2,13 @@
 <hr>
 <br>
 
+<% if flash[:error] %>
+    <% flash[:error].each do |error| %>
+        <p style="color: red">
+            <%= error %>
+        </p>
+    <% end %>
+<% end %>
 
 <%= form_for @blog do |f| %>
     Title:

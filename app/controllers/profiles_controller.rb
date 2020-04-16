@@ -9,7 +9,12 @@ class ProfilesController < ApplicationController
 
     def create
         @profile = Profile.create(params.require(:profile).permit(:fullname))
-        redirect_to @profile
+        if @profile.valid?
+            redirect_to @profile
+        else
+            flash[:error] = @profile.errors.first[1]
+            redirect_to new_profile_path
+        end
     end
 
     def show
@@ -24,7 +29,12 @@ class ProfilesController < ApplicationController
     def update
         @profile = Profile.find(params[:id])
         @profile.update(params.require(:profile).permit(:fullname))
-        redirect_to profile_path(@profile)
+        if @profile.valid?
+            redirect_to profile_path(@profile)
+        else
+            flash[:error] = @profile.errors.first[1]
+            redirect_to edit_profile_path(@profile)
+        end
     end
 
     def destroy

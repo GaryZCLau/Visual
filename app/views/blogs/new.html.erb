@@ -2,10 +2,18 @@
 <hr>
 <br>
 
+<% if flash[:error] %>
+    <% flash[:error].each do |error| %>
+        <p style="color: red">
+            <%= error %>
+        </p>
+    <% end %>
+<% end %>
+
 <%= form_for @blog do |f| %>
     Title:
     <%= f.text_area :title, :cols => "50", :rows => "1" %>
-    <br><br><br>
+    <br><br>
     <%= f.text_area :text, :cols => "250", :rows => "60" %>
     <br><br><br>
     <%= f.submit %>

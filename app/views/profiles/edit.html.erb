@@ -2,6 +2,12 @@
 <hr>
 <br>
 
+<% if flash[:error] %>
+    <p style='color: red'>
+        <%= flash[:error] %>
+    </p>
+<% end %>
+
 <%= form_for @profile do |f| %>
     Name: <%= f.text_area :fullname, :cols => "25", :rows => "1" %>
     <%= f.submit %>

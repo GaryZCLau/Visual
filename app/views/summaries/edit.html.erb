@@ -2,6 +2,12 @@
 <hr>
 <br>
 
+<% if flash[:error] %>
+    <p style='color: red'>
+        <%= flash[:error] %>
+    </p>
+<% end %>
+
 <%= form_for @summary do |f| %>
     <%= f.text_area :summary, :cols => "125", :rows => "10" %>
     <br><br>

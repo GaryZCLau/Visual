@@ -11,7 +11,10 @@ class BlogsController < ApplicationController
         @blog = Blog.new(params.require(:blog).permit(:title, :text))
         if @blog.valid?
             @blog.save
-        redirect_to new_summary_path(blog: @blog)
+            redirect_to new_summary_path(blog: @blog)
+        else
+            flash[:error] = @blog.errors.full_messages
+            redirect_to new_blog_path
         end
     end
 
@@ -26,7 +29,13 @@ class BlogsController < ApplicationController
     def update
         @blog = Blog.find(params[:id])
         @blog.update(params.require(:blog).permit(:title, :text))
-        redirect_to blog_path(@blog)
+        if @blog.valid?
+            @blog.save
+            redirect_to blog_path(@blog)
+        else
+            flash[:error] = @blog.errors.full_messages
+            redirect_to edit_blog_path(@blog)
+        end
     end
 
     def destroy
