@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
     end
 
     def create
-        @profile = Profile.create(params.require(:profile).permit(:fullname))
+        @profile = Profile.create(params.require(:profile).permit(:fullname, :password))
         if @profile.valid?
             redirect_to @profile
         else
@@ -28,7 +28,7 @@ class ProfilesController < ApplicationController
 
     def update
         @profile = Profile.find(params[:id])
-        @profile.update(params.require(:profile).permit(:fullname))
+        @profile.update(params.require(:profile).permit(:fullname, :password))
         if @profile.valid?
             redirect_to profile_path(@profile)
         else
@@ -39,6 +39,9 @@ class ProfilesController < ApplicationController
 
     def destroy
         @profile = Profile.find(params[:id])
+        @profile.blogs.destroy
+        @profile.summaries.destroy
+        @profile.posts.destroy
         @profile.destroy
         redirect_to profiles_path
     end

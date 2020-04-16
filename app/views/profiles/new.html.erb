@@ -1,4 +1,4 @@
-<h1> What would you like your profile name to be? </h1>
+<h1>Sign Up</h1>
 <hr>
 <br>
 
@@ -10,5 +10,6 @@
 
 <%= form_for @profile do |f| %>
     Name: <%= f.text_area :fullname, :cols => "25", :rows => "1" %>
+    Password: <%= f.password_field :password %>
     <%= f.submit %>
 <% end %>

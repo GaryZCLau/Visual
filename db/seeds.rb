@@ -11,7 +11,7 @@ Post.destroy_all
 Summary.destroy_all
 Blog.destroy_all
 
-gary = Profile.create(fullname: 'Gary Lau')
+gary = Profile.create(fullname: 'Gary Lau', password: "password")
 
 post1 = Post.create(post: "Quarantine sucks.", profile_id: gary.id)
 post2 = Post.create(post: "Need more coffee!!", profile_id: gary.id)

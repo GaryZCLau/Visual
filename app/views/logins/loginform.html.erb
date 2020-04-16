@@ -1,0 +1,15 @@
+<h1>Log In</h1>
+<hr>
+<br>
+
+<% if flash[:error] %>
+    <p style='color: red'>
+        <%= flash[:error] %>
+    </p>
+<% end %>
+
+<%= form_tag "/login", method: "POST" do %>
+  Name: <%= text_field_tag :fullname %>
+  Password: <%= password_field_tag :password %>
+  <%= submit_tag "Log In" %>
+<% end %>

@@ -12,7 +12,7 @@ class PostsController < ApplicationController
         if @post.valid?
             redirect_to profile_path(@post.profile_id)
         else
-            flash[:error] = @post.errors.full_messages
+            flash[:message] = @post.errors.full_messages
             redirect_to profile_path(@post.profile_id)
         end
     end
@@ -28,7 +28,12 @@ class PostsController < ApplicationController
     def update
         @post = Post.find(params[:id])
         @post.update(params.require(:post).permit(:post))
-        redirect_to profile_path(@post.profile)
+        if @post.valid?
+            redirect_to profile_path(@post.profile)
+        else
+            flash[:error] = @post.errors.full_messages
+            redirect_to edit_post_path(@post)
+        end
     end
 
     def destroy

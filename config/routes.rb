@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get '/login', to: 'logins#loginform', as: 'login_login'
+  post '/login', to: 'logins#handle_login'
+  post '/logout', to: 'logins#logout'
+
   get '/profiles', to: 'profiles#index', as: "profiles"
   get '/profiles/new', to: 'profiles#new', as: "new_profile"
   post '/profiles', to: 'profiles#create'

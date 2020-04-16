@@ -3,5 +3,7 @@ class Profile < ApplicationRecord
     has_many :summaries
     has_many :blogs, through: :summaries
 
-    validates_presence_of :fullname, message: "Name can't be blank"
+    has_secure_password
+
+    validates_presence_of :fullname, message: "Can't be blank"
 end
