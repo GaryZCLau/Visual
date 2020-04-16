@@ -1,4 +1,9 @@
-<h1> <%=@profile.fullname%> </h1> ~ <%= link_to "Edit Name", edit_profile_path %>
+<h1> <%=@profile.fullname%> </h1> 
+
+<% if logged_in? && logged_in_user.id == @profile.id %>
+    ~ <%= link_to "Edit Name", edit_profile_path %>
+<% end %>
+
 <br><br>
 <%= link_to "Search Profiles", profiles_path %>
 <hr>
@@ -13,10 +18,12 @@
     <% end %>
 <% end %>
 
-<%= form_for @newpost do |f| %>
-    <%= f.hidden_field :profile_id, value: @profile.id %>
-    What's on your mind? <%= f.text_area :post, :cols => "125", :rows => "1" %>
-    <%= f.submit %>
+<% if logged_in? && logged_in_user.id == @profile.id %>
+    <%= form_for @newpost do |f| %>
+        <%= f.hidden_field :profile_id, value: @profile.id %>
+        What's on your mind? <%= f.text_area :post, :cols => "125", :rows => "1" %>
+        <%= f.submit %>
+    <% end %>
 <% end %>
 
 <hr>
@@ -24,7 +31,11 @@
 <ul>
     <% @profile.posts.each do |post| %>
         <li> 
-            <p> <%= post.post %> ~ <%= link_to "Edit", edit_post_path(post) %></p>
+            <p> <%= post.post %> 
+                <% if logged_in? && logged_in_user.id == @profile.id %>
+                    ~ <%= link_to "Edit", edit_post_path(post) %>
+                <% end %>
+            </p>
         </li>
     <% end %>
 </ul>
@@ -32,19 +43,26 @@
 <hr>
 
 <h2>Blogs</h2>
-<%= link_to "Create a Blog!", new_blog_path %>
+<% if logged_in? && logged_in_user.id == @profile.id %>
+    <%= link_to "Create a Blog!", new_blog_path %>
+<% end %>
 <hr>
 <ul>
     <% @profile.summaries.each do |summary| %>
         <li>
             <%= link_to summary.blog.title, blog_path(summary.blog) %>
             <br><br>
-            <%= summary.summary %> ~ <%= link_to "Edit", edit_summary_path(summary) %>
+            <%= summary.summary %> 
+                <% if logged_in? && logged_in_user.id == @profile.id %>
+                    ~ <%= link_to "Edit", edit_summary_path(summary) %>
+                <% end %>
             <br><br>
         </li>
     <% end %>
 </ul>
 
 <br><br>
-<%= button_to "Delete Profile", @profile, method: :delete %>
+<% if logged_in? && logged_in_user.id == @profile.id %>
+    <%= button_to "Delete Profile", @profile, method: :delete %>
+<% end %>
 

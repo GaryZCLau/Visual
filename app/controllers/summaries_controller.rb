@@ -10,7 +10,7 @@ class SummariesController < ApplicationController
 
     def create
         @summary = Summary.new(params.require(:summary).permit(:summary, :profile_id, :blog_id))
-        @sumary.profile_id = 
+        @summary.profile_id = session[:profile_id]
         if @summary.valid?
             @summary.save
             redirect_to profile_path(@summary.profile)

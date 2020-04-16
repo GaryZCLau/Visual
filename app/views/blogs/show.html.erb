@@ -5,8 +5,11 @@
 <p> <%= @blog.text %> </p>
 
 <br>
-
-<%= link_to "Edit this blog", edit_blog_path %>
+<% @blog.summaries.each do |summary| %>
+    <% if logged_in? && logged_in_user.id == summary.profile_id %>
+        <%= link_to "Edit this blog", edit_blog_path %>
+    <% end %>
+<% end %>
 <br><br>
 
 <% @blog.profiles.each do |profiles| %>

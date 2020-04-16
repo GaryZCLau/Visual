@@ -6,7 +6,7 @@ class LoginsController < ApplicationController
       def handle_login
         @profile = Profile.find_by(fullname: params[:fullname])
         if @profile && @profile.authenticate(params[:password])
-        #   session[:profile_id] = @profile.id
+          session[:profile_id] = @profile.id
           redirect_to @profile
         else
           flash[:error] = "Invalid username or password"
