@@ -1,4 +1,7 @@
 class ProfilesController < ApplicationController
+
+    before_action :check_if_logged_in, only: [:edit]
+
     def index
         @profiles = Profile.all
     end
@@ -26,6 +29,9 @@ class ProfilesController < ApplicationController
 
     def edit
         @profile = Profile.find(params[:id])
+        unless logged_in? && logged_in_user.id == @profile.id
+            redirect_to @profile
+        end
     end
 
     def update

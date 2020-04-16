@@ -1,4 +1,7 @@
-class SummariesController < ApplicationController      
+class SummariesController < ApplicationController
+    
+    before_action :check_if_logged_in
+    
     def index
         @summaries = Summary.all
     end
