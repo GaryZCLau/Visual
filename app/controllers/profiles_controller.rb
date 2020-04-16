@@ -10,7 +10,8 @@ class ProfilesController < ApplicationController
     def create
         @profile = Profile.create(params.require(:profile).permit(:fullname, :password))
         if @profile.valid?
-            
+            # session[:profile_id] = nil
+            session[:profile_id] = @profile.id
             redirect_to @profile
         else
             flash[:error] = @profile.errors.first[1]

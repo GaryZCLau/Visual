@@ -1,5 +1,7 @@
-<h1>All Profiles</h1>
+<h1>APP</h1>
+<hr>
 
+<h2>Profiles</h2>
 <ul>
     <% @profiles.each do |profiles| %>
         <li>
@@ -7,3 +9,9 @@
         </li>
     <% end %>
 </ul>
+<br>
+<% if !logged_in? %>
+<hr>
+    <%= link_to "Log In", login_login_path %> <br>or <br><%= link_to "Sign Up", new_profile_path %>
+<% end %>
+

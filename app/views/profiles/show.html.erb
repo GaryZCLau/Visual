@@ -1,11 +1,11 @@
 <h1> <%=@profile.fullname%> </h1> 
 
+<%= link_to "Search Profiles", profiles_path %>
+
+<br><br>
 <% if logged_in? && logged_in_user.id == @profile.id %>
     ~ <%= link_to "Edit Name", edit_profile_path %>
 <% end %>
-
-<br><br>
-<%= link_to "Search Profiles", profiles_path %>
 <hr>
 
 <h2>Posts</h2> 
