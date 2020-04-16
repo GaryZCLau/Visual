@@ -63,6 +63,8 @@
 
 <br><br>
 <% if logged_in? && logged_in_user.id == @profile.id %>
+    <%= button_to "Log Out", "/logout" %>
+    <br>
     <%= button_to "Delete Profile", @profile, method: :delete %>
 <% end %>
 
