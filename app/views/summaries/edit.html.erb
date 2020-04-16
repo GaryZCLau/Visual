@@ -1,0 +1,11 @@
+<h1> What would you like to change? </h1>
+<hr>
+<br>
+
+<%= form_for @summary do |f| %>
+    <%= f.text_area :summary, :cols => "125", :rows => "10" %>
+    <br><br>
+    <%= f.submit "Update" %>
+<% end %>
+<br><br>
+<%= button_to "Delete", summary_path(@summary), method: :delete %>

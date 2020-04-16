@@ -4,9 +4,9 @@
 
 <%= form_for @blog do |f| %>
     Title:
-    <%= f.text_field :title %>
+    <%= f.text_area :title, :cols => "50", :rows => "1" %>
     <br><br><br>
-    <%= f.text_field :text %>
+    <%= f.text_area :text, :cols => "250", :rows => "60" %>
     <br><br><br>
     <%= f.submit %>
 <% end %>

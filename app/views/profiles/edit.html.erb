@@ -3,6 +3,6 @@
 <br>
 
 <%= form_for @profile do |f| %>
-    Name: <%= f.text_field :fullname %>
+    Name: <%= f.text_area :fullname, :cols => "25", :rows => "1" %>
     <%= f.submit %>
 <% end %>

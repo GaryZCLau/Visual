@@ -3,7 +3,9 @@
 <br>
 
 <%= form_for @post do |f| %>
-    <%= f.text_field :post %>
+    <%= f.text_area :post, :cols => "125", :rows => "2" %>
     <br><br>
-    <%= f.submit %>
+    <%= f.submit "Update" %>
 <% end %>
+<br><br>
+<%= button_to "Delete", post_path(@post), method: :delete %>

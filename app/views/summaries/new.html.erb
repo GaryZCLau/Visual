@@ -1,0 +1,15 @@
+<h1>Add a summary for your profile!</h1>
+<hr>
+<br>
+
+<%= form_for @summary do |f| %>
+    Blog Title: 
+    <%= @blog.title %>
+    <%= f.hidden_field :blog_id, value: @blog.id %>
+    <br><br>
+    Summary:
+    <%= f.text_area :summary, :cols => "250", :rows => "20" %>
+    <br><br>
+    
+    <%= f.submit %>
+<% end %>

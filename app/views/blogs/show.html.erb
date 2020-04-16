@@ -5,6 +5,10 @@
 <p> <%= @blog.text %> </p>
 
 <br>
+
+<%= link_to "Edit this blog", edit_blog_path %>
+<br><br>
+
 <% @blog.profiles.each do |profiles| %>
 <%= link_to "Back to profile", profile_path(profiles) %>
 <% end %>

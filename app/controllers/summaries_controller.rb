@@ -5,11 +5,14 @@ class SummariesController < ApplicationController
 
     def new
         @summary = Summary.new
+        @blog = Blog.find(params[:blog])
     end
 
     def create
-        @summary = Summary.create(params.require(:summary).permit(:summary, :profile_id, :blog_id))
-        redirect_to summary_path(@summary)
+        @summary = Summary.new(params.require(:summary).permit(:summary, :profile_id, :blog_id))
+        @sumary.profile_id = 
+        @sumary.save
+        redirect_to profile_path(@summary.profile)
     end
 
     def show
@@ -22,13 +25,14 @@ class SummariesController < ApplicationController
 
     def update
         @summary = Summary.find(params[:id])
-        @summary.update(params.require(:summary).permit(:))
-        redirect_to summary_path(@summary)
+        @summary.update(params.require(:summary).permit(:summary, :profile_id, :blog_id))
+        redirect_to profile_path(@summary.profile)
     end
 
     def destroy
         @summary = Summary.find(params[:id])
+        @summary.blog.destroy
         @summary.destroy
-        redirect_to summaries_path
+        redirect_to profile_path(@summary.profile)
     end
 end
