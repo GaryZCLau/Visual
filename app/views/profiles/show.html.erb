@@ -26,14 +26,12 @@
     <% end %>
 <% end %>
 
-<hr>
-
-<ul>
+<ul class="bulletremoval">
     <% @profile.posts.each do |post| %>
         <li> 
-            <p> <%= post.post %> 
+            <p class="list"> <%= post.post %> 
                 <% if logged_in? && logged_in_user.id == @profile.id %>
-                    ~ <%= link_to "Edit", edit_post_path(post) %>
+                    ~ <%= link_to "Edit", edit_post_path(post), class: "hidden"%>
                 <% end %>
             </p>
         </li>
@@ -46,22 +44,22 @@
 <% if logged_in? && logged_in_user.id == @profile.id %>
     <%= link_to "Create a Blog!", new_blog_path %>
 <% end %>
-<hr>
-<ul>
+
+<ul class="bulletremoval">
     <% @profile.summaries.each do |summary| %>
         <li>
             <%= link_to summary.blog.title, blog_path(summary.blog) %>
-            <br><br>
-            <%= summary.summary %> 
+            <br>
+            <p class="list"><%= summary.summary %> </p>
                 <% if logged_in? && logged_in_user.id == @profile.id %>
-                    ~ <%= link_to "Edit", edit_summary_path(summary) %>
+                    ~<%= link_to "Edit", edit_summary_path(summary), class:"hidden"%>
                 <% end %>
             <br><br>
         </li>
     <% end %>
 </ul>
 
-<br><br>
+<hr><br>
 <% if logged_in? && logged_in_user.id == @profile.id %>
     <%= button_to "Log Out", "/logout" %>
     <br>
