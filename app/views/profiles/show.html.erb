@@ -21,7 +21,7 @@
 <% if logged_in? && logged_in_user.id == @profile.id %>
     <%= form_for @newpost do |f| %>
         <%= f.hidden_field :profile_id, value: @profile.id %>
-        What's on your mind? <%= f.text_area :post, :cols => "125", :rows => "1" %>
+        What's on your mind? <%= f.text_area :post, :cols => "85", :rows => "1" %>
         <%= f.submit %>
     <% end %>
 <% end %>
